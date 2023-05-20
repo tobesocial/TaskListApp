@@ -58,6 +58,12 @@ final class StorageManager {
         return task
     }
     
+    func delete(_ index: Int) {
+        let taskDelete = fetchData()[index]
+        viewContext.delete(taskDelete)
+        saveContext()
+    }
+    
     func update(_ task: Task, withName taskName: String) -> Task {
         task.title = taskName
         saveContext()
